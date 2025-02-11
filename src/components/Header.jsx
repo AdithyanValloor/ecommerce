@@ -1,4 +1,5 @@
 import {
+  Bell,
   ChevronDown,
   Heart,
   Menu,
@@ -55,7 +56,7 @@ function Header() {
               >
                 <NavLink
                   to={
-                    item === "Categories"
+                    item === "Categories" || item === "Home"
                       ? "#"
                       : `/${item.toLowerCase().replace(" ", "-")}`
                   }
@@ -89,15 +90,15 @@ function Header() {
             ))}
             <li>
               <div
-                className={`border-t border-gray-400 first:border-t-0  bg-gray-200 w-full overflow-hidden transition-all duration-300 ${
+                className={`border-t border-gray-400 first:border-t-0 bg-gray-200 w-full overflow-hidden transition-all duration-300 ${
                   showHamCategory ? "max-h-40" : "max-h-0"
                 }`}
               >
                 <ul>
-                  {["Electronic", "Kids", "Men", "Women"].map((category) => (
+                  {["Electronics", "Kids", "Men", "Women"].map((category) => (
                     <li
                       key={category}
-                      className="hover:text-emerald-500 hover:bg-gray-100 p-1 pr-8 transition-all duration-200 "
+                      className="hover:text-emerald-500 hover:bg-gray-100 p-1 px-2 transition-all duration-200 "
                     >
                       <NavLink
                         to={`/category/${category
@@ -172,7 +173,7 @@ function Header() {
             >
               <NavLink
                 to={
-                  item === "Categories"
+                  item === "Categories" || item === "Home"
                     ? "#"
                     : `/${item.toLowerCase().replace(" ", "-")}`
                 }
@@ -208,7 +209,7 @@ function Header() {
                   onMouseLeave={() => setShowCategoryDropDown(false)}
                 >
                   <ul>
-                    {["Electronic", "Kids", "Men", "Women"].map((category) => (
+                    {["Electronics", "Kids", "Men", "Women"].map((category) => (
                       <li
                         key={category}
                         className="hover:text-emerald-500 hover:bg-gray-100 p-1 pr-8 transition-all duration-200 "
@@ -251,6 +252,16 @@ function Header() {
             className="hidden lg:inline-block p-2 transition-all duration-300 hover:text-emerald-500 relative hover:scale-110"
           >
             <Heart strokeWidth={1} />
+            <p className="bg-black text-white text-[8px] w-4 h-4 shadow-lg p-1 rounded-full absolute top-2 right-0 flex items-center justify-center">
+              99+
+            </p>
+          </NavLink>
+          
+          <NavLink
+            to={"/wish-list"}
+            className="hidden lg:inline-block p-2 transition-all duration-300 hover:text-emerald-500 relative hover:scale-110"
+          >
+            <Bell strokeWidth={1} />
             <p className="bg-black text-white text-[8px] w-4 h-4 shadow-lg p-1 rounded-full absolute top-2 right-0 flex items-center justify-center">
               99+
             </p>
@@ -306,21 +317,13 @@ function Header() {
                 id="categories"
                 className={`cursor-pointer p-2 font-light w-full rounded-full pl-4 appearance-none border border-gray-300 border-solid focus:outline-none`}
               >
-                <option className="font-light" value="all Categories">
-                  All Categories
-                </option>
-                <option className="font-light" value="electronics">
-                  Electronics
-                </option>
-                <option className="font-light" value="eids">
-                  Kids
-                </option>
-                <option className="font-light" value="men">
-                  Men
-                </option>
-                <option className="font-light" value="women">
-                  Women
-                </option>
+                { ["All Categories", "Electronics", "Kids", "Men", "Women"].map((category) => (
+                  <option className="font-light" value={`${category
+                          .toLowerCase()
+                          .replace(" ", "-")}`}>
+                    {category}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="relative flex items-center">
