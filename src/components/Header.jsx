@@ -172,7 +172,7 @@ function Header() {
                 to={`/user-profile`}
               >
                 <User2 strokeWidth={1} />
-                {Username}
+                {username}
               </NavLink>
             </li>
             <li
