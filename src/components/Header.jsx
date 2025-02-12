@@ -2,6 +2,7 @@ import {
   Bell,
   ChevronDown,
   Heart,
+  LogOut,
   Menu,
   Minus,
   Plus,
@@ -10,7 +11,8 @@ import {
   User2,
   X,
 } from "lucide-react";
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 function Header() {
@@ -21,6 +23,29 @@ function Header() {
 
   const handleSearchBox = () => setShowSearch((prev) => !prev);
   const handleHam = () => setShowHam((prev) => !prev);
+
+  let username = localStorage.getItem("username")
+
+  if (username) {
+    username = username.charAt(0).toUpperCase() + username.slice(1);
+  }
+
+  useEffect(() => {
+    if (showSearch || showHam) {
+      document.body.style.overflow = "hidden"; 
+    } else {
+      document.body.style.overflow = ""; 
+    }
+  
+    return () => {
+      document.body.style.overflow = ""; 
+    };
+  }, [showSearch, showHam]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    window.location.href = "/login"
+  }
 
   return (
     <header>
@@ -57,9 +82,12 @@ function Header() {
                 <NavLink
                   to={
                     item === "Categories" || item === "Home"
-                      ? "#"
+                      ? "/"
                       : `/${item.toLowerCase().replace(" ", "-")}`
                   }
+                  
+                  onClick={handleHam}
+
                   className="block p-2 w-full"
                   {...(item === "Categories"
                     ? {
@@ -144,15 +172,20 @@ function Header() {
                 to={`/user-profile`}
               >
                 <User2 strokeWidth={1} />
-                Username
+                {Username}
               </NavLink>
             </li>
             <li
-              onClick={handleSearchBox}
+              onClick={()=> {handleHam(), handleSearchBox()}}
               className="flex gap-2 items-center border-t border-gray-400  cursor-pointer p-2 transition-all duration-300 hover:text-emerald-500"
             >
               <Search strokeWidth={1} />
               Search
+            </li>
+            <li onClick={handleLogout}
+              className="flex gap-2 items-center border-t border-gray-400  cursor-pointer p-2 transition-all duration-300 hover:text-emerald-500"
+            >
+              <LogOut strokeWidth={1}/> Logout             
             </li>
           </ul>
         </div>
@@ -244,7 +277,7 @@ function Header() {
             className=" p-2 transition-all duration-300 hover:text-emerald-500 hover:scale-110 relative"
           >
             <ShoppingCart strokeWidth={1} />
-            <p className="bg-black text-white text-[8px] w-4 h-4 shadow-lg p-1 rounded-full absolute top-2 right-0 flex items-center justify-center">
+            <p className="bg-red-600 text-white text-[8px] w-4 h-4 shadow-lg p-1 rounded-full absolute top-2 right-0 flex items-center justify-center">
               99+
             </p>
           </NavLink>
@@ -253,7 +286,7 @@ function Header() {
             className="hidden lg:inline-block p-2 transition-all duration-300 hover:text-emerald-500 relative hover:scale-110"
           >
             <Heart strokeWidth={1} />
-            <p className="bg-black text-white text-[8px] w-4 h-4 shadow-lg p-1 rounded-full absolute top-2 right-0 flex items-center justify-center">
+            <p className="bg-red-600 text-white text-[8px] w-4 h-4 shadow-lg p-1 rounded-full absolute top-2 right-0 flex items-center justify-center">
               99+
             </p>
           </NavLink>
@@ -263,7 +296,7 @@ function Header() {
             className="hidden lg:inline-block p-2 transition-all duration-300 hover:text-emerald-500 relative hover:scale-110"
           >
             <Bell strokeWidth={1} />
-            <p className="bg-black text-white text-[8px] w-4 h-4 shadow-lg p-1 rounded-full absolute top-2 right-0 flex items-center justify-center">
+            <p className="bg-red-600 text-white text-[8px] w-4 h-4 shadow-lg p-1 rounded-full absolute top-2 right-0 flex items-center justify-center">
               99+
             </p>
           </NavLink>
@@ -273,6 +306,11 @@ function Header() {
           >
             <User2 strokeWidth={1} />
           </NavLink>
+          <button 
+            className="hidden lg:inline-block p-2 transition-all duration-300 hover:text-emerald-500 hover:scale-110"
+            onClick={handleLogout}>
+            <LogOut strokeWidth={1}/>
+          </button>
         </div>
 
         {/* Background Dark */}

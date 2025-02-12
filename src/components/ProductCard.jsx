@@ -51,7 +51,7 @@ const ProductCard = ({ image, name, price }) => {
         className={`absolute top-2 bg-white text-black hover:bg-black hover:text-white rounded-full p-2 ${
           showItems || isFilled ? "opacity-100 right-2" : "opacity-0 -right-2"
         } 
-        ${isFilled ? 'bg-red-400 text-white' : 'bg-white'}
+        ${isFilled ? 'bg-red-500 text-white' : 'bg-white'}
         transition-all duration-500`}
         onClick={() => setIsFilled(!isFilled)}
       >

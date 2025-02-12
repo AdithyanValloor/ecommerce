@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import Carousel from "../components/Carousel";
 import TextCarousel from "../components/TextCarousel";
@@ -54,8 +54,34 @@ function HomePage() {
       price: 1200,
     },
   ];
+  
+  const token = localStorage.getItem("token")
+  let username = localStorage.getItem("username")
+
+  if (username) {
+    username = username.charAt(0).toUpperCase() + username.slice(1);
+  }
+
+  const [showPopup, setShowPopup] = useState(false)
+
+  useEffect(() => {
+
+    const popupShown = sessionStorage.getItem("popupShown");
+
+    if (username && !popupShown) {
+
+      setShowPopup(true)
+
+      sessionStorage.setItem("popupShown", "true")
+      setTimeout(() => setShowPopup(false), 2000);
+    }
+  }, []);
+
   return (
     <div>
+      <p className={`bg-white shadow-md rounded-full absolute z-20 my-4 right-1/2 translate-x-1/2 py-2 px-4 text-lg transition-all duration-500 ${showPopup ? "top-20 opacity-100" : "top-14 opacity-0 pointer-events-none"}`}>
+        Welcome, {username}
+      </p>
       <div className="bg-red-300 flex flex-col justify-between">
         <h1 className="font-silkscreen text-center py-2 bg-green-300 text-[9px] md:text-base">
           Trend. Tech. Timeless – Shop the Future of Fashion & Gadgets!

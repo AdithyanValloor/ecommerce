@@ -22,3 +22,21 @@ body{
   width: max-content;
   animation: marquee 20s linear infinite;
 }
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #646464; /* Scrollbar handle color (emerald-500) */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #878787; /* Darker emerald color on hover */
+}

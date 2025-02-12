@@ -26,8 +26,6 @@ export default () => {
         disableOnInteraction: false, 
       }}
       pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
       className="w-full h-full bg-green-500"
     >
       <SwiperSlide><img className="w-full h-full object-cover" src="https://mobirise.com/extensions/commercem4/assets/images/gallery02.jpg" alt="" /></SwiperSlide>
