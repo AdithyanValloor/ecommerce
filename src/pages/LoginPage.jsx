@@ -78,7 +78,6 @@ function LoginPage() {
             if (newUser) {
                 response = await axios.post(`${backendURL}/api/auth/signup`, { username: user, email, password })
                 console.log(response)
-                // alert("Signup successful!")
 
                 setToken(response.data.token)
 
@@ -134,7 +133,7 @@ function LoginPage() {
 {/* ---------------------------- LOGIN --------------------------- */}
         <div className='bg-gradient-to-r from-[#FFB6C1] via-[#FAD0C3] to-[#FBE7A1] min-h-screen flex items-center justify-center absolute w-full top-0 -z-10'>
 
-            <div className="bg-slate-50 rounded-3xl shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] w-[90%] sm:w-[400px] md:w-1/2 lg:w-1/3 xl:w-1/4 min-w-[280px] mt-36 flex flex-col">
+            <div className="bg-slate-50 rounded-3xl shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] w-[90%] sm:w-[400px] md:w-1/2 lg:w-1/3 xl:w-1/4 min-w-[280px] lg:mt-36  flex flex-col">
                 {!newUser && <div className='h-[380px] flex flex-col justify-between'>
                     <div className='w-full h-full flex items-end justify-center'>
                         <p className="text-lg sm:text-xl lg:text-2xl font-silkscreen font-light text-center">
