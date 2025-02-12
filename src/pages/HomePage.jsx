@@ -80,7 +80,7 @@ function HomePage() {
   return (
     <div>
       <p className={`bg-white shadow-md rounded-full absolute z-20 my-4 right-1/2 translate-x-1/2 py-2 px-4 text-lg transition-all duration-500 ${showPopup ? "top-20 opacity-100" : "top-14 opacity-0 pointer-events-none"}`}>
-        Welcome, {username}
+        Welcome, {username ? username : ''}
       </p>
       <div className="bg-red-300 flex flex-col justify-between">
         <h1 className="font-silkscreen text-center py-2 bg-green-300 text-[9px] md:text-base">
