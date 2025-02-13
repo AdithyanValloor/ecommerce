@@ -1,5 +1,5 @@
 import axios from "axios";
-const backendURL = import.meta.env.VITE_BACKEND_URL
+const backendURL =  import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
 
 export const getProducts = async (category) => {
     try {

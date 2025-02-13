@@ -12,7 +12,7 @@ const ProductCard = ({ image, name, price }) => {
       onMouseLeave={() => setShowItems(false)}
       className="relative aspect-[4/6] w-full cursor-pointer overflow-hidden"
     >
-      <div className="aspect-[4/5] w-full overflow-hidden">
+      <div className="aspect-[4/5] w-full overflow-hidden border">
         <img
           className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
           src={image}
@@ -20,7 +20,7 @@ const ProductCard = ({ image, name, price }) => {
         />
       </div>
 
-      <p className="text-black font-light text-xs sm:text-xs md:text-base lg:text-base xl:text-base hover:text-cyan-500">{name}</p>
+      <p className="text-black font-light text-xs sm:text-xs md:text-base lg:text-base xl:text-base hover:text-cyan-500 truncate w-full overflow-hidden whitespace-nowrap">{name}</p>
       <p className="text-black font-light text-xs sm:text-xs md:text-base lg:text-base xl:text-base">₹ {price}</p>
 
       <button 
