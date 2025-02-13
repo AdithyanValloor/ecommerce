@@ -74,7 +74,7 @@ function Header() {
           <ul className="flex flex-col text-lg font-light h-full mx-5 my-16">
             {["Home", "All Products", "Categories"].map((item, index) => (
               <li
-                key={index}
+                key={item}
                 className={`flex items-center border-t border-gray-400 first:border-t-0 ${
                   item === "Categories" && "relative"
                 }`}
@@ -200,7 +200,7 @@ function Header() {
         <ul className="hidden lg:flex gap-10 text-lg font-light h-full">
           {["Home", "All Products", "Categories"].map((item, index) => (
             <li
-              key={index}
+              key={item}
               className={`h-full flex items-center ${
                 item === "Categories" && "relative"
               }`}

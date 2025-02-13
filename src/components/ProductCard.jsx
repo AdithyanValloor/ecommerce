@@ -48,22 +48,21 @@ const ProductCard = ({ image, name, price }) => {
       </button>
 
       <button
-        className={`absolute top-2 bg-white text-black hover:bg-black hover:text-white rounded-full p-2 ${
+        className={`absolute top-2 bg-slate-100 shadow-sm text-black hover:bg-black hover:text-white rounded-full p-2 ${
           showItems || isFilled ? "opacity-100 right-2" : "opacity-0 -right-2"
         } 
-        ${isFilled ? 'bg-red-500 text-white' : 'bg-white'}
-        transition-all duration-500`}
+        `}
         onClick={() => setIsFilled(!isFilled)}
       >
         <Heart 
-          fill={isFilled? 'white': 'none'}
+          fill={isFilled? 'red': 'none'}
           size={18}
           strokeWidth={1} 
         />
 
       </button>
       <button
-        className={`absolute top-12 bg-white text-black hover:bg-black hover:text-white rounded-full p-2 ${
+        className={`absolute top-12 bg-slate-100 shadow-sm text-black hover:bg-black hover:text-white rounded-full p-2 ${
           showItems ? "opacity-100 right-2" : "opacity-0 -right-3"
         } transition-all duration-300`}
       >

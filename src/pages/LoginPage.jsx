@@ -5,7 +5,7 @@ import { Eye, EyeClosed, Lock, Mail, User } from 'lucide-react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-const backendURL = import.meta.env.VITE_BACKEND_URL
+const backendURL = 'http://localhost:5000' || import.meta.env.VITE_BACKEND_URL
 
 function LoginPage() { 
     

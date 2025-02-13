@@ -9,10 +9,7 @@ const Root = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public Route */}
         <Route path="/login" element={<LoginPage />} />
-
-        {/* Protected Routes with Layout */}
         <Route
           path="/"
           element={
